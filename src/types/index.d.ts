@@ -7,18 +7,21 @@ export namespace Uno {
 	export interface NumberCard {
 		color: Exclude<Color, "UNIVERSAL">;
 		action: Numbers;
+		asset: string;
 		arg: null;
 	}
 
 	export interface ColorActionCard {
 		color: Exclude<Color, "UNIVERSAL">;
 		action: ColorActions;
+		asset: string;
 		arg: null;
 	}
 
 	export interface UniversalActionCard {
 		color: "UNIVERSAL";
 		action: UniversalActions;
+		asset: string;
 		arg: Exclude<Color, "UNIVERSAL">;
 	}
 
