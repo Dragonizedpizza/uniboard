@@ -4,12 +4,12 @@ export const UnoColors = ["RED", "BLUE", "GREEN", "YELLOW"] as const;
 export const UnoActions = ["SKIP", "REVERSE", "DRAW_TWO"] as const;
 export const UnoUniversalActions = ["WILD", "DRAW_FOUR"] as const;
 
-export const UnoNumberCards: Record<`${Uno.Color}_${Uno.NumberCard["action"]}`, Uno.NumberCard> = Object.fromEntries(
+export const UnoNumberCards: Record<`${Uno.Color}_${Uno.Numbers}`, Uno.NumberCard> = Object.fromEntries(
 	UnoColors.map((col) => Array.from({ length: 10 }, (_, i) => [`${col}_${i}`, { color: col, action: i.toString() }])).flat(),
 );
 export const UnoNumberCardsArray = Object.values(UnoNumberCards);
 
-export const UnoColorActionCards: Record<`${Uno.Color}_${Uno.NumberActions}`, Uno.ColorActionCard> = Object.fromEntries(
+export const UnoColorActionCards: Record<`${Uno.Color}_${Uno.ColorActions}`, Uno.ColorActionCard> = Object.fromEntries(
 	UnoColors.map((col) => UnoActions.map((act) => [`${col}_${act}`, { color: col, action: act }])).flat(),
 );
 export const UnoColorActionCardsArray = Object.values(UnoColorActionCards);
