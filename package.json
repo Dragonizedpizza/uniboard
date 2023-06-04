@@ -1,0 +1,21 @@
+{
+	"name": "boardbotd",
+	"version": "1.0.0",
+	"description": "A bot for board games.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"type": "module",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@hurricano/prettier-config": "^1.0.1",
+		"@hurricano/ts-config": "^1.1.0",
+		"@types/node": "^20.2.5"
+	},
+	"dependencies": {
+		"discord.js": "^14.11.0"
+	}
+}
