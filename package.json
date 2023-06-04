@@ -13,11 +13,9 @@
 	"devDependencies": {
 		"@hurricano/prettier-config": "^1.0.1",
 		"@hurricano/ts-config": "^1.1.0",
-		"@types/lodash": "^4.14.195",
 		"@types/node": "^20.2.5"
 	},
 	"dependencies": {
-		"discord.js": "^14.11.0",
-		"lodash": "^4.17.21"
+		"discord.js": "^14.11.0"
 	}
 }
