@@ -23,12 +23,18 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 		this.dealCards();
 	}
 
+	public start() {
+		this.dealCards();
+		this.emit("nextChance", this.currentChance);
+	}
+
 	public dealCards() {
 		this.names.forEach((name: Names[number]) => {
 			this.hands[name] = this.deck.splice(0, 7);
 		});
 
 		this.currentCard = this.deck.shift()!;
+		this.emit("card", this.currentCard);
 	}
 
 	public drawCard(name: Names[number], amount: number = 1) {
@@ -92,9 +98,10 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 			delete this.hands[this.currentChance];
 			this.names.splice(this.names.indexOf(this.currentChance), 1);
 
-			return this.emit("win", this.currentChance);
+			this.emit("win", this.currentChance);
+			if (this.names.length > 1) this.emit("nextChance", this.currentChance);
 		}
 
-		if (this.names.length > 1) this.emit("nextChance", this.currentChance);
+		this.emit("nextChance", this.currentChance);
 	}
 }
