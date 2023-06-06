@@ -22,9 +22,8 @@ export const UnoUniversalActionCards: Record<`UNIVERSAL_${Uno.UniversalActionCar
 export const UnoUniversalActionCardsArray = Object.values(UnoUniversalActionCards);
 
 export const UnoActionCards = { ...UnoColorActionCards, ...UnoUniversalActionCards };
-export function getAllUnoCards() {
-	return { ...UnoNumberCards, ...UnoActionCards };
-}
+export const AllUnoCards = { ...UnoNumberCards, ...UnoActionCards };
+
 export const UnoDeck = (<Uno.Card[]>Object.values(UnoNumberCardsArray)).concat(
 	UnoNumberCardsArray.filter((card) => card.action !== "0"),
 	UnoColorActionCardsArray,

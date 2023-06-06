@@ -74,8 +74,9 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 			this.emit("skipped", this.currentChance, this.getNextChance());
 			skip = true;
 		} else if (card.action === "REVERSE") {
-			this.emit("reversed", this.currentChance, this.getNextChance());
+			console.log(card);
 			this.names.reverse();
+			this.emit("reversed", this.currentChance, this.getNextChance());
 		}
 
 		this.currentCard = card;
@@ -83,7 +84,7 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 	}
 
 	public isPlayable(card: Uno.Card) {
-		return card.action === this.currentCard.action || card.color === this.currentCard.color || card.color === "UNIVERSAL";
+		return card.action === this.currentCard.action || card.color === this.currentCard.color || card.color === "UNIVERSAL" || this.currentCard.color === "UNIVERSAL";
 	}
 
 	public getNextChance(skip: boolean = false) {
