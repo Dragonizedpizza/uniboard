@@ -92,16 +92,18 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 	}
 
 	public nextChance(skip: boolean = false) {
-		this.currentChance = this.getNextChance(skip);
-
 		if (this.hands[this.currentChance].length === 0) {
 			delete this.hands[this.currentChance];
 			this.names.splice(this.names.indexOf(this.currentChance), 1);
 
 			this.emit("win", this.currentChance);
-			if (this.names.length > 1) this.emit("nextChance", this.currentChance);
+			if (this.names.length > 1) {
+				this.currentChance = this.getNextChance(skip);
+				this.emit("nextChance", this.currentChance);
+			}
+		} else {
+			this.currentChance = this.getNextChance(skip);
+			this.emit("nextChance", this.currentChance);
 		}
-
-		this.emit("nextChance", this.currentChance);
 	}
 }
