@@ -6,7 +6,7 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 	public hands = {} as Record<Names[number], Uno.Cards>;
 	public deck = generateUnoDeck();
 	public names: Names;
-	public usedCards: Uno.Cards = [];
+	public positions: [Names[number], number][] = [];
 	public currentChance: Names[number];
 	public currentCard!: Uno.Card;
 
@@ -40,7 +40,11 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 	public drawCard(name: Names[number], amount: number = 1) {
 		for (let i = 0; i < amount; i++) {
 			const card = this.deck.shift();
-			if (!card) throw new Error("No cards left in deck!");
+			if (!card) {
+				const positions = Object.entries(this.hands).sort((a: [string, any], b: [string, any]) => b[1].length - a[1].length);
+
+				return this.emit("gameEnd", this.positions.push(...(positions as any)));
+			}
 			this.hands[name].push(card);
 		}
 	}
@@ -74,7 +78,6 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 			this.emit("skipped", this.currentChance, this.getNextChance());
 			skip = true;
 		} else if (card.action === "REVERSE") {
-			console.log(card);
 			this.names.reverse();
 			this.emit("reversed", this.currentChance, this.getNextChance());
 		}
@@ -84,16 +87,23 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 	}
 
 	public isPlayable(card: Uno.Card) {
-		return card.action === this.currentCard.action || card.color === this.currentCard.color || card.color === "UNIVERSAL" || this.currentCard.color === "UNIVERSAL";
+		return (
+			card.action === this.currentCard.action ||
+			card.color === this.currentCard.color ||
+			card.color === "UNIVERSAL" ||
+			this.currentCard.color === "UNIVERSAL"
+		);
 	}
 
 	public getNextChance(skip: boolean = false) {
 		const index = this.names.indexOf(this.currentChance);
-		return this.names[index + (skip ? 2 : 1)] || this.names[0];
+		return this.names[index + (skip ? 2 : 1)] ?? this.names[index + (skip ? 2 : 1) - this.names.length];
 	}
 
 	public nextChance(skip: boolean = false) {
 		if (this.hands[this.currentChance].length === 0) {
+			this.positions.push([this.currentChance, 0]);
+
 			delete this.hands[this.currentChance];
 			this.names.splice(this.names.indexOf(this.currentChance), 1);
 
@@ -101,7 +111,7 @@ export class UnoEngine<Names extends string[]> extends EventEmitter {
 			if (this.names.length > 1) {
 				this.currentChance = this.getNextChance(skip);
 				this.emit("nextChance", this.currentChance);
-			}
+			} else this.emit("gameEnd", this.positions);
 		} else {
 			this.currentChance = this.getNextChance(skip);
 			this.emit("nextChance", this.currentChance);

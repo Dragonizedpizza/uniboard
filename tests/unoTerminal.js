@@ -17,7 +17,10 @@ let first = true;
 
 uno.on("card", async (card, by) => {
 	if (by) console.log(`${convertCard(card)} was played by ${by}.`);
-	else { console.log(`The first card is ${convertCard(card)}.`); first = false; };
+	else {
+		console.log(`The first card is ${convertCard(card)}.`);
+		first = false;
+	}
 });
 
 uno.on("drawn", (by, to, amount) => {
@@ -30,17 +33,25 @@ uno.emit("skipped", (by, to) => {
 });
 
 uno.on("reversed", (by, to) => {
-	console.log(`${to}'s turn was reversed by ${by}.`);
+	console.log(`The game order was reversed by ${by}, making it ${to}'s chance.`);
 });
 
 uno.on("nextChance", async (player) => {
-	console.log(await termFile(resolve(new URL('.', import.meta.url).pathname, `../assets/${["WILD", "DRAW_FOUR"].includes(uno.currentCard.action) ? "UNIVERSAL" : uno.currentCard.color}`, `${uno.currentCard.action}.png`)));
+	console.log(
+		await termFile(
+			resolve(
+				new URL(".", import.meta.url).pathname,
+				`../assets/${["WILD", "DRAW_FOUR"].includes(uno.currentCard.action) ? "UNIVERSAL" : uno.currentCard.color}`,
+				`${uno.currentCard.action}.png`,
+			),
+		),
+	);
 	if (!first) console.log(`The current card is a ${convertCard(uno.currentCard)}.`);
 
 	console.log(`It's ${player}'s chance.`);
 
-	const response = await prompt(
-		[{
+	const response = await prompt([
+		{
 			type: "select",
 			name: "card",
 			message: "Select a card to play.",
@@ -63,8 +74,8 @@ uno.on("nextChance", async (player) => {
 				title: title(color),
 				value: color,
 			})),
-		}],
-	);
+		},
+	]);
 
 	if (!response.card) return;
 
