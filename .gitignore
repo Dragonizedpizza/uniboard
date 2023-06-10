@@ -211,3 +211,5 @@ dist
 
 # TypeScript build
 dist/
+
+.DS_Store
