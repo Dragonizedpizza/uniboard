@@ -134,6 +134,9 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 
+# Sass cache
+/.sass-cache
+
 # Optional stylelint cache
 .stylelintcache
 
@@ -210,6 +213,26 @@ dist
 .pnp.*
 
 # TypeScript build
-dist/
+dist
+tmp
+/out-tsc
 
+# System files
 .DS_Store
+Thumbs.db
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

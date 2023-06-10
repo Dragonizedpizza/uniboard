@@ -1,4 +1,4 @@
-import type { Uno } from "#types";
+import type { Uno } from "packages/src/types/index";
 
 export const UnoColors = ["RED", "BLUE", "GREEN", "YELLOW"] as const;
 export const UnoActions = ["SKIP", "REVERSE", "DRAW_TWO"] as const;

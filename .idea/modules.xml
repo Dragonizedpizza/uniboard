@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BoardBot.iml" filepath="$PROJECT_DIR$/.idea/BoardBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/uniboard.iml" filepath="$PROJECT_DIR$/.idea/uniboard.iml" />
     </modules>
   </component>
 </project>
