@@ -1,6 +1,6 @@
 {
 	"extends": "@hurricano/ts-config",
 	"compilerOptions": {
-		"outDir": "./dist",
+		"outDir": "./dist"
 	}
 }

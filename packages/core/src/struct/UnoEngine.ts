@@ -1,10 +1,9 @@
 import { EventEmitter } from "node:events";
-import { generateUnoDeck } from "../types/Constants";
-import type { Uno } from "../types";
+import { Uno } from "../types/index.js";
 
 export class UnoEngine<Names extends string[]> extends EventEmitter {
 	public hands = {} as Record<Names[number], Uno.Cards>;
-	public deck = generateUnoDeck();
+	public deck = Uno.generateDeck();
 	public names: Names;
 	public positions: [Names[number], number][] = [];
 	public currentChance: Names[number];
