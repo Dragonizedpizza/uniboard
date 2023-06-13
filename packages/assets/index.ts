@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { Uno } from "@uniboard/core";
+import { Uno } from "@boardmaster/core";
 
 function startsWith(string: string, ...strings: string[]): boolean {
 	return strings.some((s) => string.startsWith(s));

@@ -8,8 +8,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       '@hurricano/ts-config':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.2.0
+        version: 1.2.0
       '@types/node':
         specifier: ^20.2.6
         version: 20.2.6
@@ -35,8 +35,8 @@ packages:
     resolution: {integrity: sha512-X22LkkNthzE1eg/+w1551SBWUuFNjT924FrgJ1zUgxzdQJsc73SJozeMbsnWWTRtZh7Y0dRIOappmquRkIjE0A==}
     dev: true
 
-  /@hurricano/ts-config@1.1.0:
-    resolution: {integrity: sha512-ZVSXxfSgmHc24gXTMC8UagjMgHThac8C2u9spTt77LWWVUiipZAN4XwSBoZMlQ1NMNV4BGw1QYL1CSNLTTMmKg==}
+  /@hurricano/ts-config@1.2.0:
+    resolution: {integrity: sha512-IG8INF6atEO2hBgbaDtg4oiE+sCtwAjCIHManMCATQ2fin1xanGVAsFRCz//CgLXDTUc6Fk2bnHskcMbL8ZLig==}
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:

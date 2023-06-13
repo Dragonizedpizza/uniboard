@@ -1,4 +1,4 @@
-import { Uno } from "@uniboard/core";
+import { Uno } from "@boardmaster/core";
 import { WebSocket } from "ws";
 import { resolve } from "path";
 import Axios from "axios";
