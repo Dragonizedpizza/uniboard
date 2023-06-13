@@ -1,14 +1,13 @@
 {
 	"name": "@boardmaster/core",
-	"version": "0.0.2",
+	"version": "0.0.1",
 	"description": "Core engine, types and constants for Boardmaster games",
 	"main": "./dist/index.js",
 	"type": "module",
 	"typings": "./dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"prepublish": "npm run build",
-		"publish": "npm publish"
+		"prepublish": "npm run build"
 	},
 	"keywords": ["uno", "game engine", "boardmaster"],
 	"author": "Dragonizedpizza",
